@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Product Statistics</h1>
+
+<div>
+    <h2>Total Product Price: @ViewData["TotalProductPrice"]</h2>
+    <h2>Average Product Price: @ViewData["AverageProductPrice"]</h2>
+    <h2>Total Product Quantity: @ViewData["TotalProductQuantity"]</h2>
+    <h2>Average Product Quantity: @ViewData["AverageProductQuantity"]</h2>
+</div>
+
+<div>
+    <h2>Most Expensive Product:</h2>
+    <p>Product Id: @(((Product)ViewData["MostExpensiveProduct"]).ProductId)</p>
+    <p>Product Name: @(((Product)ViewData["MostExpensiveProduct"]).ProductName)</p>
+    <p>Price: @(((Product)ViewData["MostExpensiveProduct"]).Price)</p>
+</div>
+
+<div>
+    <h2>Cheapest Product:</h2>
+    <p>Product Id: @(((Product)ViewData["CheapestProduct"]).ProductId)</p>
+    <p>Product Name: @(((Product)ViewData["CheapestProduct"]).ProductName)</p>
+    <p>Price: @(((Product)ViewData["CheapestProduct"]).Price)</p>
+</div>
+
+<div>
+    <h2>Total Price of 3C Products: @ViewData["Total3CProductPrice"]</h2>
+    <h2>Total Price of Beverage and Food Products: @ViewData["TotalBeverageAndFoodProductPrice"]</h2>
+</div>
+
+<div>
+    <h2>Food Products with Quantity > 100:</h2>
+    <ul>
+        @foreach (var product in (List<Product>)ViewData["FoodProducts"])
+        {
+            <li>@product.ProductName</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h2>Expensive Products by Category:</h2>
+    <ul>
+        @foreach (var category in ((Dictionary<string, List<Product>>)ViewData["ExpensiveProductsByCategory"]).Keys)
+        {
+            <li>
+                <h3>Category: @category</h3>
+                <ul>
+                    @foreach (var product in ((Dictionary<string, List<Product>>)ViewData["ExpensiveProductsByCategory"])[category])
+                    {
+                        <li>@product.ProductName</li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h2>Average Price by Category:</h2>
+    <ul>
+        @foreach (var category in ((Dictionary<string, decimal>)ViewData["AveragePriceByCategory"]).Keys)
+        {
+            <li>Category: @category, Average Price: @(((Dictionary<string, decimal>)ViewData["AveragePriceByCategory"])[category])</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h2>Products by Price (Descending):</h2>
+    <ul>
+        @foreach (var product in (List<Product>)ViewData["ProductsByPriceDescending"])
+        {
+            <li>Product Name: @product.ProductName, Price: @product.Price</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h2>Products by Quantity (Ascending):</h2>
+    <ul>
+        @foreach (var product in (List<Product>)ViewData["ProductsByQuantityAscending"])
+        {
+            <li>Product Name: @product.ProductName, Quantity: @product.Quantity</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h2>Most Expensive Product by Category:</h2>
+    <ul>
+        @foreach (var category in ((Dictionary<string, Product>)ViewData["MostExpensiveProductsByCategory"]).Keys)
+        {
+            <li>Category: @category, Product: @(((Dictionary<string, Product>)ViewData["MostExpensiveProductsByCategory"])[category]).ProductName</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h2>Cheapest Product by Category:</h2>
+    <ul>
+        @foreach (var category in ((Dictionary<string, Product>)ViewData["CheapestProductsByCategory"]).Keys)
+        {
+            <li>Category: @category, Product: @(((Dictionary<string, Product>)ViewData["CheapestProductsByCategory"])[category]).ProductName</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h2>Inexpensive Products (Price <= 10000):</h2>
+    <ul>
+        @foreach (var product in (List<Product>)ViewData["InexpensiveProducts"])
+        {
+            <li>Product Name: @product.ProductName, Price: @product.Price</li>
+        }
+    </ul>
+</div>

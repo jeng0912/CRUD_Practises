@@ -1,0 +1,42 @@
+﻿namespace CRUD_Practises.Models
+{
+    public class ProductViewModel
+    {
+        public decimal TotalPrice { get; set; }
+        public decimal AveragePrice { get; set; }
+        public int TotalQuantity { get; set; }
+        public double AverageQuantity { get; set; }
+        public Product MostExpensiveProduct { get; set; }
+        public Product CheapestProduct { get; set; }
+        public decimal TotalPrice3C { get; set; }
+        public decimal TotalPriceFoodAndBeverage { get; set; }
+        public IQueryable<Product>
+    ProductsOver100Quantity { get; set; }
+    public IQueryable<ExpensiveProductByCategory>
+        ExpensiveProductsByCategory { get; set; }
+        public IQueryable<AveragePriceByCategory>
+            AveragePriceByCategory { get; set; }
+            public IQueryable<Product>
+                ProductsSortedByPriceDescending { get; set; }
+                public IQueryable<Product>
+                    ProductsSortedByQuantityAscending { get; set; }
+                    public IQueryable<ExpensiveProductByCategory>
+                        MostExpensiveProductByCategory { get; set; }
+                        public IQueryable<ExpensiveProductByCategory>
+                            CheapestProductByCategory { get; set; }
+                            public IQueryable<Product>
+                                ProductsBelowOrEqual10000Price { get; set; }
+                                }
+
+                                public class ExpensiveProductByCategory
+                                {
+                                public string Category { get; set; }
+                                public Product ExpensiveProduct { get; set; }
+                                }
+
+                                public class AveragePriceByCategory
+                                {
+                                public string Category { get; set; }
+                                public decimal AveragePrice { get; set; }
+                                }
+                                }
